@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Health Coach | Personal Branding</title>
+<title>Health Coach</title>
 
 <style>
 body {
   margin:0;
   font-family: Arial, sans-serif;
   line-height:1.6;
-  color:#333;
 }
 
+/* HERO */
 header {
   background:#0b6b4f;
   color:white;
@@ -20,18 +20,14 @@ header {
   text-align:center;
 }
 
-header h1 {
-  font-size:2.5rem;
+header img {
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  margin-bottom:15px;
 }
 
-.btn {
-  background:#ff9800;
-  color:white;
-  padding:12px 25px;
-  text-decoration:none;
-  border-radius:25px;
-}
-
+/* SECTION */
 section {
   padding:50px 20px;
   max-width:1100px;
@@ -40,34 +36,45 @@ section {
 
 h2 {
   text-align:center;
-  margin-bottom:20px;
+  margin-bottom:30px;
 }
 
+/* GRID */
 .grid {
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
   gap:20px;
 }
 
+/* CARD */
 .card {
   background:#f9f9f9;
-  padding:20px;
+  padding:15px;
   border-radius:10px;
   text-align:center;
 }
 
-img {
+.card img {
   width:100%;
   border-radius:10px;
 }
 
+/* BEFORE AFTER */
+.before-after {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+/* VIDEO */
 .video {
   text-align:center;
 }
 
+/* FOOTER */
 footer {
   background:#222;
-  color:#fff;
+  color:white;
   text-align:center;
   padding:20px;
 }
@@ -77,73 +84,89 @@ footer {
 
 <body>
 
+<!-- HERO -->
 <header>
-  <h1>Your Name - Health Coach</h1>
-  <p>Helping you build a healthier lifestyle naturally</p>
-  <a href="#contact" class="btn">Contact Me</a>
+  <img src="images/profile.jpg" alt="Profile">
+  <h1>P S Mali</h1>
+  <p>Herballife Health & Lifestyle Coach</p>
 </header>
 
-<section id="about">
+<!-- ABOUT -->
+<section>
   <h2>About Me</h2>
   <p style="text-align:center; max-width:700px; margin:auto;">
-    I am a certified health coach focused on guiding individuals toward better lifestyle habits.
-    My approach is simple, sustainable, and personalized.
+    I help individuals improve their lifestyle through simple and sustainable habits.
   </p>
 </section>
 
+<!-- TRANSFORMATION -->
 <section>
   <h2>My Journey</h2>
-  <div class="grid">
+  <div class="before-after">
     <div class="card">
       <img src="images/before.jpg">
-      <p>Before Transformation</p>
+      <p>Before</p>
     </div>
     <div class="card">
       <img src="images/after.jpg">
-      <p>After Lifestyle Change</p>
+      <p>After</p>
     </div>
   </div>
 </section>
 
+<!-- SERVICES -->
 <section>
   <h2>What I Offer</h2>
   <div class="grid">
-    <div class="card">Personal Coaching</div>
-    <div class="card">Nutrition Guidance</div>
-    <div class="card">Lifestyle Planning</div>
+    <div class="card">
+      <img src="images/session1.jpg">
+      <p>Personal Coaching</p>
+    </div>
+    <div class="card">
+      <img src="images/session2.jpg">
+      <p>Guided Sessions</p>
+    </div>
+    <div class="card">
+      <img src="images/lifestyle1.jpg">
+      <p>Healthy Lifestyle Planning</p>
+    </div>
   </div>
 </section>
 
+<!-- LIFESTYLE -->
 <section>
-  <h2>Client Testimonials</h2>
+  <h2>Healthy Living</h2>
   <div class="grid">
-    <div class="card">"Great guidance and support!"</div>
-    <div class="card">"Helped me improve my daily routine"</div>
+    <div class="card">
+      <img src="images/lifestyle1.jpg">
+    </div>
+    <div class="card">
+      <img src="images/lifestyle2.jpg">
+    </div>
   </div>
 </section>
 
+<!-- VIDEO -->
 <section>
-  <h2>Short Videos</h2>
-
+  <h2>Short Video</h2>
   <div class="video">
-    <video width="300" controls>
+    <video width="300" controls poster="images/video-thumb.jpg">
       <source src="videos/video1.mp4" type="video/mp4">
     </video>
   </div>
-
-  <p style="text-align:center;">Short tips and motivation clips</p>
 </section>
 
-<section id="contact">
-  <h2>Contact Me</h2>
+<!-- CONTACT -->
+<section>
+  <h2>Contact</h2>
   <p style="text-align:center;">
-    Email: your@email.com <br>
-    WhatsApp: +91 XXXXX XXXXX
+    Email: sagarwelness@gmail.com <br>
+    WhatsApp: +91 87672 56521
   </p>
 </section>
 
 <footer>
-  <p>© 2026 Health Coach | Personal Branding Website</p>
+  <p>© 2026 Health Coach</p>
 </footer>
 
 </body>
