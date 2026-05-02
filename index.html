@@ -3,41 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Health Coach</title>
+<title>P J MAATI | Health Coach</title>
 
 <style>
-body {
-  margin:0;
-  font-family: Arial, sans-serif;
-  line-height:1.6;
+body {margin:0;font-family:sans-serif;background:#f4f9f7}
+
+/* NAVBAR */
+.navbar {
+  position:sticky;
+  top:0;
+  background:#0b6b4f;
+  color:white;
+  padding:12px;
+  text-align:center;
+  font-weight:bold;
+  z-index:1000;
 }
 
 /* HERO */
-header {
-  background:#0b6b4f;
+.hero {
+  background:linear-gradient(135deg,#0b6b4f,#1dbf73);
   color:white;
-  padding:60px 20px;
   text-align:center;
+  padding:60px 20px;
 }
-
-header img {
-  width:120px;
-  height:120px;
-  border-radius:50%;
-  margin-bottom:15px;
+.hero img {
+  width:110px;height:110px;border-radius:50%;
+  border:4px solid white;
 }
 
 /* SECTION */
-section {
-  padding:50px 20px;
-  max-width:1100px;
-  margin:auto;
-}
-
-h2 {
-  text-align:center;
-  margin-bottom:30px;
-}
+section {padding:50px 20px;max-width:1100px;margin:auto;}
+h2 {text-align:center;color:#0b6b4f;margin-bottom:25px}
 
 /* GRID */
 .grid {
@@ -48,126 +45,175 @@ h2 {
 
 /* CARD */
 .card {
-  background:#f9f9f9;
-  padding:15px;
-  border-radius:10px;
-  text-align:center;
-}
-
-.card img {
-  width:100%;
-  border-radius:10px;
-}
-
-/* BEFORE AFTER */
-.before-after {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
-}
-
-/* VIDEO */
-.video {
-  text-align:center;
-}
-
-/* FOOTER */
-footer {
-  background:#222;
-  color:white;
-  text-align:center;
+  background:white;
   padding:20px;
+  border-radius:12px;
+  box-shadow:0 5px 12px rgba(0,0,0,0.1);
+  text-align:center;
+  transition:0.3s;
+}
+.card:hover {transform:translateY(-5px)}
+
+/* IMAGES */
+img {width:100%;border-radius:10px}
+
+/* ANIMATION */
+.hidden {opacity:0;transform:translateY(30px);transition:0.6s ease}
+.show {opacity:1;transform:translateY(0)}
+
+/* TESTIMONIAL */
+.slider {max-width:600px;margin:auto}
+.slide {display:none}
+.slide.active {display:block;font-style:italic}
+
+/* CTA */
+.btn {
+  background:#ff9800;
+  color:white;
+  padding:12px 20px;
+  border-radius:25px;
+  text-decoration:none;
+  margin:5px;
+  display:inline-block;
+}
+
+/* FLOAT BUTTONS */
+.whatsapp {
+  position:fixed;
+  bottom:80px;
+  right:20px;
+  background:#25D366;
+  color:white;
+  padding:15px;
+  border-radius:50%;
+  font-size:20px;
+}
+.call {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#0b6b4f;
+  color:white;
+  padding:15px;
+  border-radius:50%;
+  font-size:20px;
+}
+
+/* IFRAME */
+iframe {
+  width:100%;
+  max-width:400px;
+  height:220px;
+  border-radius:10px;
 }
 </style>
-
 </head>
 
 <body>
 
-<!-- HERO -->
-<header>
-  <img src="images/profile.jpg" alt="Profile">
-  <h1>P S Mali</h1>
-  <p>Herballife Health & Lifestyle Coach</p>
-</header>
+<!-- NAVBAR -->
+<div class="navbar">P J MAATI | Holistic Health Mission</div>
 
-<!-- ABOUT -->
-<section>
-  <h2>About Me</h2>
-  <p style="text-align:center; max-width:700px; margin:auto;">
-    I help individuals improve their lifestyle through simple and sustainable habits.
-  </p>
+<!-- HERO -->
+<section class="hero">
+  <img src="images/profile.jpg" alt="Coach">
+  <h1>P J MAATI</h1>
+  <p>“1 Million Logon Tak Swasth Jeevan Pahunchane Ka Sankalp”</p>
 </section>
 
-<!-- TRANSFORMATION -->
-<section>
-  <h2>My Journey</h2>
-  <div class="before-after">
-    <div class="card">
-      <img src="images/before.jpg">
-      <p>Before</p>
-    </div>
-    <div class="card">
-      <img src="images/after.jpg">
-      <p>After</p>
-    </div>
+<!-- USP -->
+<section class="hidden">
+  <h2>4 Core Pillars</h2>
+  <div class="grid">
+    <div class="card">🧘 Meditation</div>
+    <div class="card">🏃 Exercise</div>
+    <div class="card">🌿 Herbal Guidance</div>
+    <div class="card">🤝 Personal Mentorship</div>
   </div>
 </section>
 
-<!-- SERVICES -->
-<section>
-  <h2>What I Offer</h2>
+<!-- JOURNEY -->
+<section class="hidden">
+  <h2>Transformation Journey</h2>
   <div class="grid">
     <div class="card">
-      <img src="images/session1.jpg">
-      <p>Personal Coaching</p>
+      <img src="images/before.jpg" alt="Before">
+      <p>Before Lifestyle Change</p>
     </div>
     <div class="card">
-      <img src="images/session2.jpg">
-      <p>Guided Sessions</p>
-    </div>
-    <div class="card">
-      <img src="images/lifestyle1.jpg">
-      <p>Healthy Lifestyle Planning</p>
+      <img src="images/after.jpg" alt="After">
+      <p>After Consistency</p>
     </div>
   </div>
 </section>
 
 <!-- LIFESTYLE -->
-<section>
-  <h2>Healthy Living</h2>
+<section class="hidden">
+  <h2>Healthy Living Moments</h2>
   <div class="grid">
-    <div class="card">
-      <img src="images/lifestyle1.jpg">
-    </div>
-    <div class="card">
-      <img src="images/lifestyle2.jpg">
-    </div>
+    <div class="card"><img src="images/session1.jpg"></div>
+    <div class="card"><img src="images/session2.jpg"></div>
+    <div class="card"><img src="images/lifestyle1.jpg"></div>
+    <div class="card"><img src="images/lifestyle2.jpg"></div>
   </div>
 </section>
 
-<!-- VIDEO -->
-<section>
-  <h2>Short Video</h2>
-  <div class="video">
-    <video width="300" controls poster="images/video-thumb.jpg">
-      <source src="videos/video1.mp4" type="video/mp4">
-    </video>
+<!-- YOUTUBE VIDEO -->
+<section class="hidden" style="text-align:center;">
+  <h2>Coach Message</h2>
+
+  <!-- Replace VIDEO_ID -->
+  <iframe
+    src="https://www.youtube.com/embed/VIDEO_ID"
+    title="Coach Message"
+    frameborder="0"
+    allowfullscreen>
+  </iframe>
+
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="hidden">
+  <h2>What People Say</h2>
+  <div class="slider">
+    <div class="slide active">"Life changing guidance!"</div>
+    <div class="slide">"Simple and practical health approach"</div>
+    <div class="slide">"Best mentor for daily discipline"</div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section>
-  <h2>Contact</h2>
-  <p style="text-align:center;">
-    Email: sagarwelness@gmail.com <br>
-    WhatsApp: +91 87672 56521
-  </p>
+<section style="text-align:center;">
+  <h2>Connect With Me</h2>
+  <a href="tel:+911542521532" class="btn">📞 Call Now</a>
+  <a href="https://wa.me/911542521532" class="btn">💬 WhatsApp</a>
 </section>
 
-<footer>
-  <p>© 2026 Health Coach</p>
-</footer>
+<!-- FLOAT BUTTONS -->
+<a href="https://wa.me/911542521532" class="whatsapp">💬</a>
+<a href="tel:+911542521532" class="call">☎</a>
+
+<!-- SCRIPT -->
+<script>
+// SCROLL ANIMATION
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+});
+document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
+
+// TESTIMONIAL SLIDER
+let index=0;
+setInterval(()=>{
+  let slides=document.querySelectorAll('.slide');
+  slides.forEach(s=>s.classList.remove('active'));
+  index=(index+1)%slides.length;
+  slides[index].classList.add('active');
+},3000);
+</script>
 
 </body>
 </html>
