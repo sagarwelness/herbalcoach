@@ -674,32 +674,28 @@ iframe {
   <div class="grid">
 
     <div class="card hover-card">
-      <div class="card-front">🧘 Meditation</div>
-      <div class="card-back">
+      <div class="card-front">🧘 Meditation<br>
         👉 “फक्त ध्यान नाही—मन, झोप आणि<br>
         ताण नियंत्रणासाठी मार्गदर्शित सिस्टेमॅटिक प्रक्रिया.”
       </div>
     </div>
 
     <div class="card hover-card">
-      <div class="card-front">🏃 Exercise</div>
-      <div class="card-back">
+      <div class="card-front">🏃 Exercise<br>
         👉 “जिम शिवाय—व्यस्त लोकांसाठी घरी करता येणारी सोपी,<br>
-        सातत्यपूर्ण आणि परिणामकारक व्यायाम पद्धती.”
+        सातत्यपूर्ण व्यायाम पद्धती.”
       </div>
     </div>
 
     <div class="card hover-card">
-      <div class="card-front">🌿 Herbal Guidance</div>
-      <div class="card-back">
+      <div class="card-front">🌿 Herbal Guidance<br>
         👉 “प्रत्येक व्यक्तीसाठी वेगळे—<br>
         शरीराच्या गरजेनुसार वैयक्तिक हर्बल पोषण मार्गदर्शन.”
       </div>
     </div>
 
     <div class="card hover-card">
-      <div class="card-front">🤝 Mentorship</div>
-      <div class="card-back">
+      <div class="card-front">🤝 Mentorship<br>
         👉 “सामान्य सल्ला नाही—तुमच्या लाइफस्टाइलनुसार<br>
         वैयक्तिक हेल्थ कोचिंग आणि सतत फॉलो-अप.”
       </div>
@@ -727,35 +723,35 @@ iframe {
   <div class="video-slider">
     <iframe class="video-slide active"
       title="Coach message 1"
-      src="https://www.youtube.com/embed/If6hW9-KdVE"
+      src="https://www.youtube.com/embed/If6hW9-KdVE?enablejsapi=1&playsinline=1"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       referrerpolicy="strict-origin-when-cross-origin"
       allowfullscreen></iframe>
 
     <iframe class="video-slide"
       title="Coach message 2"
-      src="https://www.youtube.com/embed/Jr9I3IijbWQ"
+      src="https://www.youtube.com/embed/Jr9I3IijbWQ?enablejsapi=1&playsinline=1"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       referrerpolicy="strict-origin-when-cross-origin"
       allowfullscreen></iframe>
 
     <iframe class="video-slide"
       title="Coach message 3"
-      src="https://www.youtube.com/embed/UipWwIQok9k"
+      src="https://www.youtube.com/embed/UipWwIQok9k?enablejsapi=1&playsinline=1"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       referrerpolicy="strict-origin-when-cross-origin"
       allowfullscreen></iframe>
 
     <iframe class="video-slide"
       title="Coach message 4"
-      src="https://www.youtube.com/embed/H3pL1MlOiMk"
+      src="https://www.youtube.com/embed/H3pL1MlOiMk?enablejsapi=1&playsinline=1"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       referrerpolicy="strict-origin-when-cross-origin"
       allowfullscreen></iframe>
 
     <iframe class="video-slide"
       title="Coach message 5"
-      src="https://www.youtube.com/embed/RVHaoRms-Yw"
+      src="https://www.youtube.com/embed/RVHaoRms-Yw?enablejsapi=1&playsinline=1"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       referrerpolicy="strict-origin-when-cross-origin"
       allowfullscreen></iframe>
@@ -926,18 +922,61 @@ if (heroPanel) {
 }
 
 const videoSlides = document.querySelectorAll(".video-slide");
-let videoIndex = 1;
+let videoIndex = 0;
+let videoTimer;
+let videoPlayers = [];
 
 if (videoSlides.length > 0) {
-  setInterval(() => {
-    videoSlides.forEach(v => v.classList.remove("active"));
+  function stopVideoRotation() {
+    clearTimeout(videoTimer);
+  }
 
-    videoSlides[videoIndex].classList.add("active");
+  function showVideoSlide(nextIndex) {
+    videoSlides.forEach((video, index) => {
+      video.classList.toggle("active", index === nextIndex);
 
-    videoIndex++;
-    if (videoIndex >= videoSlides.length) videoIndex = 0;
+      if (index !== nextIndex && videoPlayers[index]?.pauseVideo) {
+        videoPlayers[index].pauseVideo();
+      }
+    });
 
-  }, 6000); // slower for videos
+    videoIndex = nextIndex;
+  }
+
+  function scheduleVideoRotation() {
+    stopVideoRotation();
+
+    if (videoSlides.length < 2) return;
+
+    videoTimer = setTimeout(() => {
+      showVideoSlide((videoIndex + 1) % videoSlides.length);
+      scheduleVideoRotation();
+    }, 10000);
+  }
+
+  window.onYouTubeIframeAPIReady = function () {
+    videoPlayers = Array.from(videoSlides).map((video, index) => new YT.Player(video, {
+      events: {
+        onStateChange: event => {
+          if (event.data === YT.PlayerState.PLAYING) {
+            stopVideoRotation();
+          }
+
+          if (event.data === YT.PlayerState.ENDED) {
+            showVideoSlide((index + 1) % videoSlides.length);
+            scheduleVideoRotation();
+          }
+
+        }
+      }
+    }));
+  };
+
+  const youtubeApiScript = document.createElement("script");
+  youtubeApiScript.src = "https://www.youtube.com/iframe_api";
+  document.head.appendChild(youtubeApiScript);
+
+  scheduleVideoRotation();
 }
 
   // Testimonial slider
